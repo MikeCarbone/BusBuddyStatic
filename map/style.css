@@ -1,0 +1,88 @@
+*{
+	border: none;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5, li{
+	font-family: sans-serif;
+	color: darkblue;
+}
+
+h2{
+	font-size: .75rem;
+}
+
+h1, h3{
+	display: inline-block;
+}
+
+.container{
+	background-image: url(map.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	margin: 0 auto 100px auto;
+	max-width: 800px;
+	min-height: 100vh;
+}
+
+.top-display__arrow{
+	margin: 0 0 0 20px;
+	width: 45px;
+}
+
+.top-display__eta{
+	background-color: white;
+	border-radius: 7px;
+	margin: 10px 20px 0 0;
+	padding: 10px;
+}
+
+.map-view__top-display{
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
+	max-height: 200px;
+	max-width: 800px;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.map-view__timeline{
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	margin: 90vh 0 0 0;
+	max-width: 800px;
+	position: absolute;
+	/*margin: 500px 0 0 0;*/
+	width: 100%;
+}
+
+.map-view__timeline ul{
+	margin-top: 50px;
+}
+
+.map-view__timeline li{
+	border-left: solid 2px darkblue;
+	list-style-type: none;
+	margin: 0 0 0 25%;
+	padding: 20px 20px 20px 20px;
+	width: 75%;
+}
+
+.time--active{
+	color: red;
+}
+
+.map-view__timeline h1{
+	text-align: center;
+}
+
+.shrink{
+	margin-bottom: -10px;
+}
