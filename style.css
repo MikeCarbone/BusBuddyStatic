@@ -180,13 +180,18 @@ input[type=text], input[type=password]  {
     background-color: #8DC562;
 }
 
+nav {
+
+    margin: 0 auto;
+}
+
 nav ul {
 
     list-style-type: none;
     text-align: center;
     margin: 0 auto;
     padding-left: 0;
-    width: 380px; 
+    width: 360px; 
     border: 1px solid #4DAAF7;
     border-radius: 10px;
     color: #B9B9B9;
@@ -304,7 +309,7 @@ nav ul li:nth-child(2) {
 
 .c-timeline {
 
-    width: 350px;
+    width: 300px;
     height: 8px;
     background-color: #B9B9B9;
     border-radius: 35px;
@@ -322,16 +327,21 @@ nav ul li:nth-child(2) {
     border: 6px solid #B9B9B9;
     border-radius: 50%;
     display: inline-block;
-    margin-right: 1.5em;
-    margin-left: 1.5em;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
     margin-bottom: 1em;
     margin-top: -1.3em;
   }
 
+  li .c-timeline__item {
+
+    padding:0.5em;
+  }
+
 .c-timeline__bus {
 
-    margin-left: 2em;
-    margin-right: 2em;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
 }
 
 
@@ -545,4 +555,14 @@ nav ul li:nth-child(2) {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+  }
+
+
+  @media only screen and (min-width: 360px) {
+
+    main {
+
+        margin-left: 1em;
+    }
+
   }
