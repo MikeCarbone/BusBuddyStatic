@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Assistant|Comfortaa" rel="stylesheet">
+    <link rel="stylesheet" href="css/screen.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>BusBuddy || Dashboard</title>
+
+</head>
+<div id="l-root">
+<body>
+<header class="l-dashboard-header">
+    <a href="settings.html"><img class="c-gear" src="img/gear.svg" alt="gear"></a>
+    <div class="c-header-text">Dashboard</div>
+        <nav class="c-top-nav">
+            <ul class="c-top-nav__submenu">
+                <li><span class="dot"></span> Mike</li>
+                <li><span class="dot dot-active"></span> Sarah</li>
+                <li><span class="dot"></span> Craig</li>
+            </ul>
+        </nav>
+</header>
+<main class="l-dashboard-main">
+    <div class="c-eta-text">
+        <div class="c-eta-text__text">ETA</div>
+        <div class="c-eta-text__timer">7:32</div>
+        <span class="c-eta-text__meridiem">am</span>
+    </div>
+    <div class="c-status-box c-status-box__neutral">The bus is on its way.</div>
+    <!-- <div class="c-status-box c-status-box__negative">No scan; bus has left the stop.</div>
+    <div class="c-status-box c-status-box__positive">The bus has arrived at school.</div> -->
+    <div class="arrow-down"></div>
+    <div class="c-timeline a-timeline">
+        <span style="width: 60%"></span>
+        <div class="c-timeline__item c-timeline__home animation">
+            <img class="c-timeline__image" src="img/school_bus.svg" alt="School Bus">
+        </div>
+        <div class="c-timeline__item c-timeline__bus animation">
+            <img class="c-timeline__image-2" src="img/profile.svg" alt="Profile">
+        </div>
+        <div class="c-timeline__item c-timeline__bus school">
+            <img class="c-timeline__image-3" src="img/school.svg" alt="School">
+        </div>
+    </div>
+
+    <div class="c-driver-info">
+        <div class="c-driver-info__label"><strong>Driver:</strong></div>
+        <div class="c-driver-info__text">Kendansha Wood <br> VXP-312</div>
+    </div>
+
+    <button class="c-btn-map-view" onclick="window.location.href='map.html'">Map View</button>
+
+</main>
+
+    <div class="c-student-info">
+        <div class="c-student-info__pickup"><b>Scheduled Pick-up Time:  </b> 7:20am</div>
+        <div class="c-student-info__location"><b>Pick-up location:  </b>
+                Jackson st & Fillmore St</div>
+    </div>
+
+    <button class="c-btn-detail-view" onclick="window.location.href='details.html'">Details</button>
+
+    <script>
+
+    
+    // Animate the timeline bar
+    $(".c-timeline > span").each(function() {
+        $(this)
+    .data("origWidth", $(this).width())
+    .width(0)
+    .animate({
+      width: $(this).data("origWidth") 
+    }, 1400);
+        });
+    
+    </script>
+</body>
+</div>
+
+</html>
