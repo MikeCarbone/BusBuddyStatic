@@ -1,9 +1,9 @@
 /* ! PUTTING STYLES HERE FOR NOW NOT PERMANENT!!! */
 
-body {
+#l-root {
 
     font-family: 'Assistant', sans-serif;
-    max-width: 440px;
+    max-width: 375px;
     margin: 0 auto;
     background: #F9FEFF;
     /* border: 1px solid #000; */
@@ -11,7 +11,7 @@ body {
     color: #032A4A;
 }
 
-main {
+.l-dashboard-main {
 
     background-color: #fff;
     margin: 0 auto;
@@ -20,7 +20,7 @@ main {
     margin-bottom: 2em;
     padding: 1em;
     box-shadow: 0px 0px 17px 1px rgba(0,0,0,0.13);
-    width: 87%;
+    width: 86%;
 
 }
 
@@ -41,6 +41,14 @@ input[type=text], input[type=password]  {
     display: inline-block;
     width: 35px;
     padding: 0.5em;
+}
+
+.c-arrow {
+
+    display: inline-block;
+    position: absolute;
+    top: 2em;
+    left: 2em;
 }
 .c-password-input, .c-email-input {
 
@@ -153,6 +161,7 @@ input[type=text], input[type=password]  {
     display: inline-block;
     padding: 1em;
     margin: 0 auto;
+    margin-left: -0.8em;
     padding-left: 3.75em;
     padding-bottom: 8em;
 }
@@ -254,13 +263,28 @@ nav ul li:nth-child(2) {
     font-size: 1.2em;
     width: 150px;
     font-family: 'Comfortaa';
-    background-color: rgb(237, 246, 247);
+    background-color: rgb(241, 253, 255);
+    box-shadow: 0px 0px 17px 1px rgba(0,0,0,0.13);
 
     /* border: 1px solid #B9B9B9; */
     display: inline-block;
     border-radius: 15px;
     margin-bottom: 2em;
 
+}
+
+.c-status-box:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+    border-top-color: rgb(241, 253, 255);
+	border-bottom: 0;
+	margin-left: -20px;
+	margin-bottom: -20px;
 }
 
 .c-status-box__neutral {
@@ -278,19 +302,7 @@ nav ul li:nth-child(2) {
     color: #E06565;
 }
 
-.c-status-box:after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	width: 0;
-	height: 0;
-	border: 20px solid transparent;
-	border-top-color:  rgb(237, 246, 247);   
-	border-bottom: 0;
-	margin-left: -20px;
-	margin-bottom: -20px;
-}
+
 
 .c-status-box__negative::after {
 
@@ -309,35 +321,101 @@ nav ul li:nth-child(2) {
 
 .c-timeline {
 
-    width: 300px;
+    width: 315px;
     height: 8px;
     background-color: #B9B9B9;
     border-radius: 35px;
+    /* position: relative; */
     margin: 0 auto;
     margin-bottom: 2em;
     margin-top: 2em;
     display: inline-block;
+    text-align: center;
+    z-index: -2;
 }
+
+.c-timeline > span {
+    display: block;
+    height: 100%;
+    z-index: 0;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: #fdc03e;
+    background-image: linear-gradient(
+      center bottom,
+      rgb(43,194,83) 37%,
+      rgb(84,240,84) 69%
+    );
+    position: relative;
+    overflow: hidden;
+  }
+
+  .c-timeline__item {
+
+    border: 6px solid #fdc03e;
+
+  }
+
+  .c-timeline__image {
+
+    display: inline-block;
+    position: absolute;
+    width: 43px;
+    margin-left: -1.28em;
+    margin-top: 0.8em;
+  }
+
+  .c-timeline__image-2 {
+
+    display: inline-block;
+    position: absolute;
+    width: 30px;
+    margin-left: -1em;
+    margin-top: 0.5em;
+  }
+
+  .c-timeline__image-3 {
+
+    display: inline-block;
+    position: absolute;
+    width: 40px;
+    margin-left: -1.27em;
+    margin-top: 0.6em;
+  }
+
+  .animation {
+    
+    animation: 1s ease-out 0s 1 colorShift;
+    border: 4px solid #fdc03e;
+  }
 
 .c-timeline__item {
     
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
     background-color: #FFF;
-    border: 6px solid #B9B9B9;
+    position: relative;
+    /* z-index: 1; */
+    
     border-radius: 50%;
     display: inline-block;
     margin-right: 0.5em;
-    margin-left: 0.5em;
+    margin-left: 1.5em;
     margin-bottom: 1em;
-    margin-top: -1.3em;
+    margin-top: -2em;
   }
 
   li .c-timeline__item {
 
     padding:0.5em;
   }
+.school {
 
+    border: 4px solid #B9B9B9;
+
+}
 .c-timeline__bus {
 
     margin-left: 1.5em;
@@ -350,7 +428,7 @@ nav ul li:nth-child(2) {
     float: right;
     border: none;
     font-size: 1.1em;
-    padding: 0.75em 2em 0.75em 2em;
+    padding: 0.75em 1.4em 0.75em 1.4em;
     background-color: #FDC03E;
     box-shadow:  inset 0px -4px 0px rgba(0,0,0,.20);
     color: #032A4A;
@@ -358,6 +436,7 @@ nav ul li:nth-child(2) {
     margin-top: -2.5em;
     border-radius: 10px;
     font-family: 'Comfortaa';
+    cursor: pointer;
 }
 
 .c-btn-detail-view {
@@ -374,6 +453,7 @@ nav ul li:nth-child(2) {
     font-weight: bold;
     border-radius: 10px;
     font-family: 'Comfortaa';
+    cursor: pointer;
 }
 
 .c-btn-log-view {
@@ -386,10 +466,23 @@ nav ul li:nth-child(2) {
     box-shadow:  inset 0px -4px 0px rgba(0,0,0,.20);
     color: #032A4A;
     font-weight: bold;
-    margin-top: -4em;
     margin-right: 1.5em;
     border-radius: 10px;
     font-family: 'Comfortaa';
+}
+
+.c-btn-log-view:active, .c-btn-login:active, .c-btn-map-view:active {
+
+    background-color: #E7AB2C;
+    /* box-shadow:  inset 0px -4px 0px rgb(253,192,62); */
+    color: #fff;
+
+}
+
+.c-btn-detail-view:active, .c-sign-in-btn:active {
+
+    color: #fff;
+    background-color: #5AB4FF;
 }
 
 .c-student-info {
@@ -477,9 +570,6 @@ nav ul li:nth-child(2) {
     cursor: pointer;
     border-radius: 6px; 
   }
-
-
-
 
 
 
