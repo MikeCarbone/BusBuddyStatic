@@ -1,44 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-
-    <title>Quick Start - Leaflet</title>
-
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="0=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Assistant|Comfortaa" rel="stylesheet">
+    <link rel="stylesheet" href="css/screen.css">
+    <link rel="stylesheet" href="style.css">
+    <title>BusBuddy | Map</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
         crossorigin="" />
+    <link rel="stylesheet" href="map.css">
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
         crossorigin=""></script>
-    <style>
-        @keyframes dash {
-        to {
-            stroke-dashoffset: 0;
-        }
-        }
-
-        .path{
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 1000;
-            animation: dash 5s linear forwards;
-        }
-    </style>
 
 </head>
-
+<div id="root"></div>
 <body>
+        <a href="dashboard.html"><img class="c-arrow" src="img/arrow.svg" alt="gear"></a>
+        <div class="c-eta">
+                <div class="c-eta__static">ETA</div>
+                <div class="c-eta__time">7:32</div>
+                <span class="c-eta__meridiem">am</span>
+            </div>
+    <div id="mapid">
+    </div>
+    <!-- <input type="text" id="current_center">
+    <button id="fly">Fly</button> -->
 
-
-
-    <div id="mapid" style="width: 600px; height: 400px;"></div>
-    <input type="text" id="current_center">
-    <button id="fly">Fly</button>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
 
-        var mymap = L.map('mapid').setView([39.95449073417355, -75.19163131713867], 15);
+        // var mymap = L.map('mapid').setView([39.95449073417355, -75.19163131713867], 15);
+
+        var mymap = L.map('mapid',{
+            center: [39.95449073417355, -75.19163131713867],
+            zoom: 14,
+            zoomControl: false
+        })
+
+        var myIcon = L.divIcon({className: 'my-div-icon'});
+        // you can set .my-div-icon styles in CSS
+        L.marker([50.505, 30.57], {icon: myIcon}).addTo(mymap);
 
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
             maxZoom: 18,
@@ -114,9 +118,15 @@
             iconAnchor: [19, 19],
             popupAnchor: [-3, -76]
         });
+        var busIcon = new L.Icon({
+            iconUrl: 'img/bus_icon.svg',
+            iconSize: [38, 38],
+            iconAnchor: [19, 19],
+            popupAnchor: [-3, -76]
+        });
 
-        L.marker([39.95521446349413, -75.19845485687256], { icon: mapIcon }).addTo(mymap);
-        L.marker([39.98162534206613, -75.15729904174805], { icon: mapIcon2 }).addTo(mymap);
+        // L.marker([39.95521446349413, -75.19845485687256], { icon: mapIcon }).addTo(mymap);
+        // L.marker([39.98162534206613, -75.15729904174805], { icon: mapIcon2 }).addTo(mymap);
 
 
         var geoJSON = {
@@ -161,8 +171,8 @@
         L.geoJSON(geoJSON, {
             style: function (feature) {
                 return {
-                    color: '#F9A602',
-                    weight: '5',
+                    color: '#3271CA',
+                    weight: '6',
                     // dashArray: '100',
                     // dashOffset: '100',
                     className: 'path'
@@ -171,24 +181,229 @@
             }
         }).addTo(mymap);
 
-        mymap.on('moveend', function (e) {
-            $('#current_center').val(mymap.getCenter().lat + ',' + mymap.getCenter().lng);
-        });
 
+[
+    {
+        "featureType": "all",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "saturation": 36
+            },
+            {
+                "color": "#333333"
+            },
+            {
+                "lightness": 40
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#fefefe"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#fefefe"
+            },
+            {
+                "lightness": 17
+            },
+            {
+                "weight": 1.2
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#f5f5f5"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#f5f5f5"
+            },
+            {
+                "lightness": 21
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#dedede"
+            },
+            {
+                "lightness": 21
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 17
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 29
+            },
+            {
+                "weight": 0.2
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 18
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                "lightness": "70"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#f2f2f2"
+            },
+            {
+                "lightness": 19
+            }
+        ]
+    },
+    {
+        "featureType": "transit.station.bus",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#e9e9e9"
+            },
+            {
+                "lightness": 17
+            }
+        ]
+    }
+]
 
+        // mymap.on('moveend', function (e) {
+        //     $('#current_center').val(mymap.getCenter().lat + ',' + mymap.getCenter().lng);
+        // });
 
-        $(document).on('click', '#fly', function () {
-            mymap.flyTo([39.98162534206613, -75.15729904174805], 15);
-        });
+        // $(document).on('click', '#fly', function () {
+        //     mymap.flyTo([39.98162534206613, -75.15729904174805], 15);
+        // });
 
 
         // var map = L.map('map', {
         //     renderer: L.canvas()
         // });
     </script>
-
-
-
 </body>
-
 </html>
