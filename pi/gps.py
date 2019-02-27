@@ -4,6 +4,7 @@
 
 import time
 import serial
+import requests
 
 def readString():
     while 1:
@@ -103,8 +104,19 @@ def printGLL(lines):
     print("Lat,Long: ", latlng[0], lines[2], ", ", latlng[1], lines[4], sep='')
     print("Fix taken at:", getTime(lines[5], "%H%M%S.%f", "%H:%M:%S"), "UTC")
     print("Status (A=OK,V=KO):", lines[6])
+
     if lines[7].partition("*")[0]:  # Extra field since NMEA standard 2.3
         print("Mode (A=Autonomous, D=Differential, E=Estimated, N=Data not valid):", lines[7].partition("*")[0])
+
+   #   You may have to concatenate those into one variable
+    lat = latlng[0] + lines[2]
+    long = latlng[1] + lines[4]
+   
+    payload = { "data": { "x": lat, "y": long}}
+    r = requests.post('http://localhost:5000/api/buddies', data = payload, headers = {"content-type":"application/json"})
+
+    print(r)
+   
     return
 
 
@@ -148,7 +160,7 @@ if __name__ == '__main__':
         while True:
             line = readString()
             lines = line.split(",")
-            if checksum(line):
+            if checksum(line): 
                 if lines[0] == "GPRMC":
                     printRMC(lines)
                     pass
