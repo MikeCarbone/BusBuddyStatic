@@ -3,11 +3,10 @@
 #l-root {
 
     font-family: 'Assistant', sans-serif;
-    max-width: 375px;
+    height: 100vh;
     margin: 0 auto;
     background: #F9FEFF;
     /* border: 1px solid #000; */
-    border-radius: 25px;
     color: #032A4A;
 }
 
@@ -221,8 +220,8 @@ nav ul li:nth-child(2) {
 
     border-left: 1px solid #4DAAF7;
     border-right: 1px solid #4DAAF7;
-    background-color: #4DAAF7;
-    color: #fff;
+
+    
 }
 
 .c-eta-text {
@@ -263,9 +262,7 @@ nav ul li:nth-child(2) {
     font-size: 1.2em;
     width: 150px;
     font-family: 'Comfortaa';
-    background-color: rgb(241, 253, 255);
-    box-shadow: 0px 0px 17px 1px rgba(0,0,0,0.13);
-
+    background-color: #4DAAF7;
     /* border: 1px solid #B9B9B9; */
     display: inline-block;
     border-radius: 15px;
@@ -281,7 +278,7 @@ nav ul li:nth-child(2) {
 	width: 0;
 	height: 0;
 	border: 20px solid transparent;
-    border-top-color: rgb(241, 253, 255);
+    border-top-color: #4DAAF7;
 	border-bottom: 0;
 	margin-left: -20px;
 	margin-bottom: -20px;
@@ -289,7 +286,7 @@ nav ul li:nth-child(2) {
 
 .c-status-box__neutral {
 
-    color: #fdc03e
+    color: #fff;
 }
 
 .c-status-box__positive {
@@ -573,7 +570,7 @@ nav ul li:nth-child(2) {
 
 
 
-  .container {
+  .check-container {
     display: inline-block;
     margin: 0 auto;
     width: 80%;
@@ -590,14 +587,20 @@ nav ul li:nth-child(2) {
     text-align: center;
     margin-left: 1em;
   }
+
+  .check-text {
+
+    padding-left: 2em;
+  }
   
   /* Hide the browser's default checkbox */
-  .container input {
+  .check-container input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
     height: 0;
     width: 0;
+  
   }
   
   
@@ -605,7 +608,7 @@ nav ul li:nth-child(2) {
   .checkmark {
     position: absolute;
     top: 0;
-    left: 60px;
+    left: 40px;
     height: 25px;
     width: 25px;
     background-color: #eee;
@@ -613,12 +616,12 @@ nav ul li:nth-child(2) {
   }
   
   /* On mouse-over, add a grey background color */
-  .container:hover input ~ .checkmark {
+  .check-container:hover input ~ .checkmark {
     background-color: #ccc;
   }
   
   /* When the checkbox is checked, add a blue background */
-  .container input:checked ~ .checkmark {
+  .check-container input:checked ~ .checkmark {
     background-color: #4DAAF7;
   }
   
@@ -630,12 +633,12 @@ nav ul li:nth-child(2) {
   }
   
   /* Show the checkmark when checked */
-  .container input:checked ~ .checkmark:after {
+  .check-container input:checked ~ .checkmark:after {
     display: block;
   }
   
   /* Style the checkmark/indicator */
-  .container .checkmark:after {
+  .check-container .checkmark:after {
     left: 9px;
     top: 5px;
     width: 5px;
@@ -679,8 +682,8 @@ nav ul li:nth-child(2) {
   .c-detail__container::after {
     content: '';
     position: absolute;
-    width: 5px;
-    height: 5px;
+    width: 7px;
+    height: 7px;
     left: 15%;
     background-color: #B9B9B9;
     border: 4px solid #B9B9B9;
@@ -692,13 +695,13 @@ nav ul li:nth-child(2) {
   
   /* Place the container to the right */
   .right {
-    left: 6.7%;
+    left: 7%;
   }
   
   
   /* Fix the circle for containers on the right side */
   .right::after {
-    left: 6px;
+    left: 20px;
   }
   
   /* The actual content */
@@ -732,7 +735,7 @@ nav ul li:nth-child(2) {
   
     /* Make sure all circles are at the same spot */
     .left::after, .right::after {
-    left: 15px;
+    left: 23px;
     }
     
     /* Make all right containers behave like the left ones */
